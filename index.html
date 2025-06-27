@@ -1,49 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>RA - Rubén Darío</title>
+    <title>Juego RA: Poema de Rubén Darío</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
-    <style>
-      body { margin: 0; overflow: hidden; }
-    </style>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.js"></script>
   </head>
-  <body>
-
+  <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs="sourceType: webcam;">
       
-      <!-- Usamos el marcador personalizado -->
-      <a-marker type="pattern" url="pattern-ruben_dario.patt">
+      <!-- Marcador personalizado -->
+      <a-marker type="pattern" url="patrón-ruben_dario.patt" id="marcador">
         
-        <!-- Esfera dorada que se puede tocar -->
-        <a-sphere id="esfera" position="0 0.5 0" radius="0.3" color="#FFD700"></a-sphere>
+        <!-- Esfera interactiva -->
+        <a-sphere 
+          id="esfera" 
+          position="0 0.5 0" 
+          radius="0.3" 
+          color="#FFD700">
+        </a-sphere>
 
-        <!-- Verso oculto que se muestra al hacer clic -->
-        <a-entity id="verso" visible="false"
-                  position="0 1 0"
-                  text="value: Juventud, divino tesoro...; color: #FFFFFF; align: center;">
+        <!-- Texto poético oculto -->
+        <a-entity 
+          id="verso" 
+          visible="false"
+          position="0 1 0"
+          text="value: Juventud, divino tesoro...; color: #FFFFFF; align: center;">
         </a-entity>
 
       </a-marker>
 
-      <!-- Cámara con cursor para detectar clics -->
-      <a-entity camera>
-        <a-cursor fuse="true" timeout="500"></a-cursor>
-      </a-entity>
-
+      <a-entity camera></a-entity>
     </a-scene>
 
-    <!-- Script para activar el texto al hacer clic en la esfera -->
     <script>
       const esfera = document.getElementById("esfera");
       const verso = document.getElementById("verso");
 
       esfera.addEventListener("click", () => {
-        verso.setAttribute("visible", "true");
+        verso.setAttribute("visible", true);
       });
     </script>
-
   </body>
 </html>
-
