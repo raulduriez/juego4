@@ -6,33 +6,37 @@
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
-
     <a-scene embedded arjs="sourceType: webcam;">
-      <!-- Marcador personalizado con patrón -->
+      
+      <!-- Marcador personalizado con patrón corregido -->
       <a-marker type="pattern" url="pattern-1.patt" id="marcador">
-          <a-marker type="pattern" url="marcador.patt" id="marcador">
         
-        <!-- Objeto 3D que se muestra en RA -->
+        <!-- Objeto 3D interactivo -->
         <a-sphere position="0 0.5 0" radius="0.3" color="#FFD700" id="esfera"></a-sphere>
 
-        <!-- Texto oculto que aparece al hacer clic -->
+        <!-- Texto oculto que se muestra al hacer clic -->
         <a-entity id="verso" visible="false"
                   position="0 1 0"
-                  text="value: 'Juventud, divino tesoro...'; color: #FFFFFF; align: center;">
+                  text="value: Juventud, divino tesoro...; color: #FFFFFF; align: center;">
         </a-entity>
       </a-marker>
 
-      <!-- Cámara -->
-      <a-entity camera></a-entity>
+      <!-- Cámara con cursor para interacción -->
+      <a-entity camera>
+        <a-cursor fuse="true" timeout="500"></a-cursor>
+      </a-entity>
+      
     </a-scene>
 
+    <!-- Script para mostrar verso al hacer clic -->
     <script>
       const esfera = document.getElementById("esfera");
       const verso = document.getElementById("verso");
 
       esfera.addEventListener("click", () => {
-        verso.setAttribute("visible", true);
+        verso.setAttribute("visible", "true");
       });
     </script>
   </body>
 </html>
+
