@@ -6,16 +6,16 @@
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
- 
+
     <a-scene embedded arjs="sourceType: webcam;">
-      <!-- Cámara y marcador personalizado -->
+      <!-- Marcador personalizado con patrón -->
       <a-marker type="pattern" url="pattern-ccc(2).patt" id="marcador">
-        <!-- Objeto 3D visible al escanear -->
+        <!-- Objeto 3D que se muestra en RA -->
         <a-sphere position="0 0.5 0" radius="0.3" color="#FFD700" id="esfera"></a-sphere>
 
         <!-- Texto oculto que aparece al hacer clic -->
         <a-entity id="verso" visible="false"
-                  position="0 0.8 0"
+                  position="0 1 0"
                   text="value: 'Juventud, divino tesoro...'; color: #FFFFFF; align: center;">
         </a-entity>
       </a-marker>
