@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Juego RA: Poema de Rubén Darío</title>
+    <title>Prueba RA - Rubén Darío</title>
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
+
     <a-scene embedded arjs="sourceType: webcam;">
       
-      <!-- Marcador personalizado con patrón corregido -->
-      <a-marker type="pattern" url="pattern-1.patt" id="marcador">
-        
-        <!-- Objeto 3D interactivo -->
-        <a-sphere position="0 0.5 0" radius="0.3" color="#FFD700" id="esfera"></a-sphere>
+      <!-- Usa marcador Hiro estándar -->
+      <a-marker preset="hiro">
+        <!-- Objeto 3D -->
+        <a-sphere position="0 0.5 0" radius="0.4" color="#FFD700" id="esfera"></a-sphere>
 
-        <!-- Texto oculto que se muestra al hacer clic -->
+        <!-- Texto oculto que aparece al tocar -->
         <a-entity id="verso" visible="false"
                   position="0 1 0"
                   text="value: Juventud, divino tesoro...; color: #FFFFFF; align: center;">
@@ -25,10 +25,9 @@
       <a-entity camera>
         <a-cursor fuse="true" timeout="500"></a-cursor>
       </a-entity>
-      
+
     </a-scene>
 
-    <!-- Script para mostrar verso al hacer clic -->
     <script>
       const esfera = document.getElementById("esfera");
       const verso = document.getElementById("verso");
@@ -39,4 +38,3 @@
     </script>
   </body>
 </html>
-
