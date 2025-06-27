@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prueba RA - Rubén Darío</title>
+    <meta charset="utf-8">
+    <title>RA - Rubén Darío</title>
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
   </head>
-  <body style="margin: 0; overflow: hidden;">
+  <body>
 
     <a-scene embedded arjs="sourceType: webcam;">
       
-      <!-- Usa marcador Hiro estándar -->
-      <a-marker type="pattern" url="pattern-ruben dario.patt">
-        <!-- Objeto 3D -->
-        <a-sphere position="0 0.5 0" radius="0.4" color="#FFD700" id="esfera"></a-sphere>
+      <!-- Usamos el marcador personalizado -->
+      <a-marker type="pattern" url="pattern-ruben_dario.patt">
+        
+        <!-- Esfera dorada que se puede tocar -->
+        <a-sphere id="esfera" position="0 0.5 0" radius="0.3" color="#FFD700"></a-sphere>
 
-        <!-- Texto oculto que aparece al tocar -->
+        <!-- Verso oculto que se muestra al hacer clic -->
         <a-entity id="verso" visible="false"
                   position="0 1 0"
                   text="value: Juventud, divino tesoro...; color: #FFFFFF; align: center;">
         </a-entity>
+
       </a-marker>
 
-      <!-- Cámara con cursor para interacción -->
+      <!-- Cámara con cursor para detectar clics -->
       <a-entity camera>
         <a-cursor fuse="true" timeout="500"></a-cursor>
       </a-entity>
 
     </a-scene>
 
+    <!-- Script para activar el texto al hacer clic en la esfera -->
     <script>
       const esfera = document.getElementById("esfera");
       const verso = document.getElementById("verso");
@@ -36,5 +43,7 @@
         verso.setAttribute("visible", "true");
       });
     </script>
+
   </body>
 </html>
+
